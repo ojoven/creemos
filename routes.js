@@ -2,34 +2,21 @@
 // for the two main URL endpoints of the application - /create and /chat/:id
 // and listens for socket.io messages.
 
-// Use the gravatar module, to turn email addresses into avatar images:
-
-var gravatar = require('gravatar');
-
-// Export a function, so that we can pass 
+// Export a function, so that we can pass
 // the app and io instances from the app.js file:
 
 module.exports = function(app,io){
 
 	app.get('/', function(req, res){
 
-		// Render views/home.html
-		res.render('home');
+		// Render views/thejudge.html
+		res.render('thejudge');
 	});
 
-	app.get('/create', function(req,res){
+	app.get('/thepresenter', function(req,res){
 
-		// Generate unique id for the room
-		var id = Math.round((Math.random() * 1000000));
-
-		// Redirect to the random room
-		res.redirect('/chat/'+id);
-	});
-
-	app.get('/chat/:id', function(req,res){
-
-		// Render the chant.html view
-		res.render('chat');
+		// Render views/thepresenter.html
+		res.render('thepresenter');
 	});
 
 	// Initialize a new socket.io application, named 'chat'
@@ -50,7 +37,6 @@ module.exports = function(app,io){
 				socket.emit('peopleinchat', {
 					number: 1,
 					user: room[0].username,
-					avatar: room[0].avatar,
 					id: data
 				});
 			}
@@ -60,7 +46,7 @@ module.exports = function(app,io){
 			}
 		});
 
-		// When the client emits 'login', save his name and avatar,
+		// When the client emits 'login', save his name,
 		// and add them to the room
 		socket.on('login', function(data) {
 
@@ -73,10 +59,6 @@ module.exports = function(app,io){
 
 				socket.username = data.user;
 				socket.room = data.id;
-				socket.avatar = gravatar.url(data.avatar, {s: '140', r: 'x', d: 'mm'});
-
-				// Tell the person what he should use for an avatar
-				socket.emit('img', socket.avatar);
 
 
 				// Add the client to the room
@@ -84,14 +66,10 @@ module.exports = function(app,io){
 
 				if (room.length == 1) {
 
-					var usernames = [],
-						avatars = [];
+					var usernames = [];
 
 					usernames.push(room[0].username);
 					usernames.push(socket.username);
-
-					avatars.push(room[0].avatar);
-					avatars.push(socket.avatar);
 
 					// Send the startChat event to all the people in the
 					// room, along with a list of people that are in it.
@@ -99,8 +77,7 @@ module.exports = function(app,io){
 					chat.in(data.id).emit('startChat', {
 						boolean: true,
 						id: data.id,
-						users: usernames,
-						avatars: avatars
+						users: usernames
 					});
 				}
 			}
@@ -118,8 +95,7 @@ module.exports = function(app,io){
 			socket.broadcast.to(this.room).emit('leave', {
 				boolean: true,
 				room: this.room,
-				user: this.username,
-				avatar: this.avatar
+				user: this.username
 			});
 
 			// leave the room
