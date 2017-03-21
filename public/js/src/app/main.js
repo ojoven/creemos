@@ -17,7 +17,12 @@ $(function(){
 
 		// Judge
 		$positive = $('#positive'),
-		$negative = $('#negative' ),
+		$negative = $('#negative'),
+
+		$crack = $('#crack'),
+		$payaso = $('#payaso'),
+		$queremos = $('#queremos'),
+		$caraanchoa = $('#caraanchoa'),
 
 		// Presenter
 		$applausePlayer = document.getElementById('applause-player');
@@ -28,19 +33,48 @@ $(function(){
 
 	// NAMES
 	var names = ['Mikel', 'Fernando', 'Andoni', 'Raquel', 'Xabi', 'Antonio', 'Federico', 'Luis', 'Jon', 'Ion', 'Julen', 'Igor', 'Imanol', 'Iñigo'];
-	var user = rand = names[Math.floor(Math.random() * myArray.length)];
+	var user = names[Math.floor(Math.random() * names.length)];
+	var id = guid();
+
+	console.log('You are ' + user + ' with id ' + id);
 
 	// Judge related events (triggers)
 	if ($body.hasClass('judge')) {
 
+		// Applause
 		$positive.on('mousedown', function() {
-			socket.emit('event', {type: 'positive-start', user: user});
+			socket.emit('event', {type: 'positive-start', user: user, id: id});
 		});
 
 		$positive.on('mouseup', function() {
-			socket.emit('event', {type: 'positive-end', user: user});
+			socket.emit('event', {type: 'positive-end', user: user, id: id});
 		});
 
+		// Boooh
+		$negative.on('mousedown', function() {
+			socket.emit('event', {type: 'negative-start', user: user, id: id});
+		});
+
+		$negative.on('mouseup', function() {
+			socket.emit('event', {type: 'negative-end', user: user, id: id});
+		});
+
+		// Others
+		$crack.on('click', function() {
+			socket.emit('event', {type: 'other', sound:'crack', user: user, id: id});
+		});
+
+		$payaso.on('click', function() {
+			socket.emit('event', {type: 'other', sound:'payaso', user: user, id: id});
+		});
+
+		$queremos.on('click', function() {
+			socket.emit('event', {type: 'other', sound:'queremos', user: user, id: id});
+		});
+
+		$caraanchoa.on('click', function() {
+			socket.emit('event', {type: 'other', sound:'caraanchoa', user: user, id: id});
+		});
 	}
 
 	// Presenter related events (catch)
@@ -58,6 +92,9 @@ $(function(){
 					decreaseApplause();
 					console.log('applause end!');
 					break;
+				case 'other':
+					triggerSound(data.sound);
+					break;
 			}
 
 			console.log(numApplauding);
@@ -66,6 +103,7 @@ $(function(){
 
 	}
 
+	// Sound functions
 	function increaseApplause() {
 
 		numApplauding++;
@@ -87,7 +125,30 @@ $(function(){
 			$applausePlayer.stop(); // start
 		} else {
 			$applausePlayer.volume = numApplauding * 10 / 100;
+			console.log($applausePlayer.volume);
 		}
+	}
+
+	function triggerSound(sound) {
+
+		console.log(sound);
+
+		var $soundPlayer = document.getElementById(sound + '-player');
+		$soundPlayer.play(); // start
+		$soundPlayer.volume = 1;
+		console.log($soundPlayer.volume);
+
+	}
+
+	// Auxiliar
+	function guid() {
+		function s4() {
+			return Math.floor((1 + Math.random()) * 0x10000)
+				.toString(16)
+				.substring(1);
+		}
+		return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+			s4() + '-' + s4() + s4() + s4();
 	}
 
 });
