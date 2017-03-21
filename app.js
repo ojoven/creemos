@@ -29,7 +29,9 @@ io.on('connection', function (socket) {
 	console.log('new user connected');
 	socket.on('event', function(data) {
 
+		// Broadcast event to all presenters
 		socket.broadcast.emit('event', data);
+		//socket.broadcast.to(socket.room).emit('receive', data);
 		console.log(data);
 	});
 

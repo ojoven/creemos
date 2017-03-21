@@ -4,14 +4,14 @@
 
 <head>
 
-	<title>The Judge</title>
+	<title>The Presenter</title>
 
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link href="http://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet" type="text/css">
 
 </head>
 
-<body>
+<body class="presenter">
 
 	<!-- HEADER -->
 	<header id="header">
@@ -22,14 +22,13 @@
 
 	</header>
 
-	<!-- SECTION -->
-	<section>
 
-		<div class="tutorial">
-			<a id="emitter" href="#">
-				Emit!
-			</a>
-		</div>
+	<section class="section">
+
+		<audio id="applause-player" controls>
+			<source src="mp3s/applause.mp3" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio>
 
 	</section>
 
@@ -38,4 +37,5 @@
 	<script src="js/app.min.js?v=1"></script>
 
 </body>
+
 </html>
