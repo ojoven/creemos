@@ -23,3 +23,14 @@ require('./config')(app, io);
 require('./routes')(app, io);
 
 console.log('Your application is running on http://localhost:' + port);
+
+io.on('connection', function (socket) {
+
+	console.log('new user connected');
+	socket.on('event', function(data) {
+
+		socket.broadcast.emit('event', data);
+		console.log(data);
+	});
+
+});
