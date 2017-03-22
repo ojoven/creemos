@@ -75,6 +75,16 @@ $(function(){
 		$caraanchoa.on('click', function() {
 			socket.emit('event', {type: 'other', sound:'caraanchoa', user: user, id: id});
 		});
+
+		socket.on('event', function(data){
+
+			switch (data.type) {
+				case 'view':
+					updateView(data.view);
+					break;
+			}
+
+		});
 	}
 
 	// Presenter related events (catch)
@@ -99,6 +109,26 @@ $(function(){
 
 			console.log(numApplauding);
 
+		});
+
+		var $toRatings = $('#to-ratings'),
+			$toResume = $('#to-resume');
+
+		$toRatings.on('click', function() {
+			socket.emit('event', {type: 'view', view:'ratings'});
+		});
+
+		$toResume.on('click', function() {
+			socket.emit('event', {type: 'view', view:'resume'});
+		});
+
+	}
+
+	// Change view functions
+	function updateView(view) {
+
+		$('.section').fadeOut(300, function() {
+			$('#' + view).fadeIn();
 		});
 
 	}
