@@ -3,7 +3,6 @@
 // ==============================================
 
 // Vars
-$btnMainTextColor: $white;
 $btnMainBg: #ccc;
 $btnMainBorder: $white;
 $btnMainHoverBg: #ccc;
@@ -12,7 +11,7 @@ $btnMainHoverBorder: #ccc;
 // GENERAL BUTTON
 .btn {
   @extend .bold;
-  @include transition(all 0.5s ease);
+  @include transition(all 0.2s ease);
   display: inline-block;
   font-size: 16px;
   line-height: 1.2;
@@ -21,13 +20,45 @@ $btnMainHoverBorder: #ccc;
   text-transform: uppercase;
   text-align: center;
 
-  // MAIN BUTTON
-  &.btn-main {
-    color: $btnMainTextColor;
-    border: 3px solid $btnMainBorder;
+  // RATING BUTTONS
+  &.btn-rating {
+
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #ccc;
+    text-indent: -99999px;
+
+    box-shadow: 0 1px 0 0 rgba(255,255,255,0.298039) inset, 0 -1px 1px 0 rgba(255,255,255,0.14902) inset, 0 7px 0 0 rgb(187,187,187), 0 8px 3px 0 rgba(0,0,0,0.2);
+    margin: 10px;
+
+    &:active {
+      box-shadow: none;
+      @include translateY(5px);
+    }
+
+    &.rating-positive {
+      border-color: darken($greenPea, 10%);
+      background: $greenPea;
+    }
+
+    &.rating-negative {
+      border-color: darken($redFirebrick, 10%);
+      background: $redFirebrick;
+    }
+
+  }
+
+  // DEFAULT BUTTON
+  &.btn-default {
+    color: $blackTundora;
+    border: 3px solid $blackTundora;
+    margin: 10px;
 
     &:hover, &:focus {
-      border-color: $btnMainHoverBorder;
+      background-color: $blackTundora;
+      border-color: $white;
+      color: $white;
     }
   }
 

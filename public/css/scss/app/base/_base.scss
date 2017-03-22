@@ -12,6 +12,7 @@ html, body {
 body {
   @extend .regular;
   background: $bodyBg;
+  text-align: center;
 }
 
 p {

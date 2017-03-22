@@ -46,7 +46,7 @@ h2, h3, h4 { font-weight: normal; }
 /* BASE STYLES */
 html, body { height: 100%; }
 
-body { background: #fefefe; }
+body { background: #fefefe; text-align: center; }
 
 p { font-size: 18px; }
 
@@ -71,6 +71,11 @@ sub { top: 0.4em; }
 .grid.row50 > .container > * { width: 46%; float: left; }
 .grid.row50 > .container > *:first-child { margin-right: 4%; }
 
+#header { background: #eaf7fd; padding: 15px 0; }
+#header h1 { font-size: 20px; }
+
+.main-ratings { margin: 20px 0; }
+
 /** PAGES **/
 /** HELPERS **/
 .srt { clip: rect(1px, 1px, 1px, 1px); position: absolute; margin: 0; padding: 0; }
@@ -93,9 +98,13 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 input { -webkit-appearance: none; border-radius: 0; }
 
 /** COMPONENTS **/
-.btn { -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; display: inline-block; font-size: 16px; line-height: 1.2; padding: 10px 25px 10px 20px; text-decoration: none; text-transform: uppercase; text-align: center; }
-.btn.btn-main { color: #ffffff; border: 3px solid #ffffff; }
-.btn.btn-main:hover, .btn.btn-main:focus { border-color: #ccc; }
+.btn { -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; -webkit-transition: all 0.2s ease; transition: all 0.2s ease; display: inline-block; font-size: 16px; line-height: 1.2; padding: 10px 25px 10px 20px; text-decoration: none; text-transform: uppercase; text-align: center; }
+.btn.btn-rating { border-radius: 50%; width: 100px; height: 100px; border: 3px solid #ccc; text-indent: -99999px; box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.29804) inset, 0 -1px 1px 0 rgba(255, 255, 255, 0.14902) inset, 0 7px 0 0 #bbbbbb, 0 8px 3px 0 rgba(0, 0, 0, 0.2); margin: 10px; }
+.btn.btn-rating:active { box-shadow: none; -moz-transform: translate3d(0px, 5px, 0); -o-transform: translate3d(0px, 5px, 0); -ms-transform: translate3d(0px, 5px, 0); -webkit-transform: translate3d(0px, 5px, 0); transform: translate3d(0px, 5px, 0); }
+.btn.btn-rating.rating-positive { border-color: #5f8737; background: #78AB46; }
+.btn.btn-rating.rating-negative { border-color: #a21e1e; background: #CD2626; }
+.btn.btn-default { color: #444; border: 3px solid #444; margin: 10px; }
+.btn.btn-default:hover, .btn.btn-default:focus { background-color: #444; border-color: #ffffff; color: #ffffff; }
 
 h1, h2, h3 { color: #000; font-size: 38px; line-height: 1.2; }
 
