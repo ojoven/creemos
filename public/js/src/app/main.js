@@ -127,9 +127,10 @@ $(function(){
 	// Change view functions
 	function updateView(view) {
 
-		$('.section').fadeOut(300, function() {
+		$('.section').fadeOut(300);
+		setTimeout(function() {
 			$('#' + view).fadeIn();
-		});
+		}, 500);
 
 	}
 

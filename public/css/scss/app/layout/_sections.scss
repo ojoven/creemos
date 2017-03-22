@@ -2,8 +2,18 @@
 // SECTIONS
 // ==============================================
 
-.main-ratings {
+// Sections
+#ratings { display: none; }
+#resume { display: block; }
+
+.section {
 	margin: 20px 0;
+}
+
+.option {
+	margin: 20px 0;
+	padding-bottom: 20px;
+	border-bottom: 2px solid $creamFoam;
 }
 
 // ==============================================

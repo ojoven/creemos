@@ -15,10 +15,11 @@ $btnMainHoverBorder: #ccc;
   display: inline-block;
   font-size: 16px;
   line-height: 1.2;
-  padding: 10px 25px 10px 20px;
+  padding: 10px 20px 10px 20px;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
+  margin: 10px;
 
   // RATING BUTTONS
   &.btn-rating {
@@ -30,7 +31,6 @@ $btnMainHoverBorder: #ccc;
     text-indent: -99999px;
 
     box-shadow: 0 1px 0 0 rgba(255,255,255,0.298039) inset, 0 -1px 1px 0 rgba(255,255,255,0.14902) inset, 0 7px 0 0 rgb(187,187,187), 0 8px 3px 0 rgba(0,0,0,0.2);
-    margin: 10px;
 
     &:active {
       box-shadow: none;
@@ -53,12 +53,25 @@ $btnMainHoverBorder: #ccc;
   &.btn-default {
     color: $blackTundora;
     border: 3px solid $blackTundora;
-    margin: 10px;
 
     &:hover, &:focus {
       background-color: $blackTundora;
       border-color: $white;
       color: $white;
+    }
+  }
+
+  // TWITTER BUTTON
+  &.btn-twitter {
+    color: $twitter;
+    border: 3px solid $twitter;
+    background: $white;
+    text-transform: none;
+    padding: 10px;
+
+    // Twitter icon
+    > i {
+      margin-right: 5px;
     }
   }
 
