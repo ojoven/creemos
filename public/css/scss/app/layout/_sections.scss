@@ -16,13 +16,26 @@
 	border-bottom: 2px solid $creamFoam;
 }
 
+.main-ratings {
+	margin-bottom: 20px;
+}
+
 // Presenter
 .audios {
 	display: none;
 }
 
-.logs {
-	margin: 20px 0;
+.logs_container {
+	width: 90%;
+	margin: 20px auto;
+	height: 250px;
+	padding: 20px;
+	border: 2px solid #ccc;
+
+	.logs {
+		height: 200px;
+		overflow: hidden;
+	}
 
 	.log {
 		font-size: 14px;

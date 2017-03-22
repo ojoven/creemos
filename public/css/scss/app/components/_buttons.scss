@@ -36,9 +36,10 @@ $btnMainHoverBorder: #ccc;
       font-size: 50px;
       position: relative;
       top: 10px;
+      text-shadow: 0 2px 2px #444;
     }
 
-    &:active {
+    &:active, &.active {
       box-shadow: none;
       @include translateY(5px);
     }

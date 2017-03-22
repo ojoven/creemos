@@ -3,11 +3,6 @@ $(function(){
 	// connect to the socket
 	var socket = io();
 
-	// on connection to server get the id of person's room
-	socket.on('connect', function(){
-		console.log('connected');
-	});
-
 	socket.on('event', function(data){
 		console.log(data);
 	});
@@ -42,38 +37,50 @@ $(function(){
 	if ($body.hasClass('judge')) {
 
 		// Applause
-		$positive.on('mousedown', function() {
+		$positive.on('touchstart', function() {
+			$positive.addClass('active');
 			socket.emit('event', {type: 'positive-start', user: user, id: id});
+			return false;
 		});
 
-		$positive.on('mouseup', function() {
+		$positive.on('touchend', function() {
+			$positive.removeClass('active');
 			socket.emit('event', {type: 'positive-end', user: user, id: id});
+			return false;
 		});
 
 		// Boooh
-		$negative.on('mousedown', function() {
+		$negative.on('touchstart', function() {
+			$negative.addClass('active');
 			socket.emit('event', {type: 'negative-start', user: user, id: id});
+			return false;
 		});
 
-		$negative.on('mouseup', function() {
+		$negative.on('touchend', function() {
+			$negative.removeClass('active');
 			socket.emit('event', {type: 'negative-end', user: user, id: id});
+			return false;
 		});
 
 		// Others
 		$crack.on('click', function() {
 			socket.emit('event', {type: 'other', sound:'crack', user: user, id: id});
+			return false;
 		});
 
 		$payaso.on('click', function() {
 			socket.emit('event', {type: 'other', sound:'payaso', user: user, id: id});
+			return false;
 		});
 
 		$queremos.on('click', function() {
 			socket.emit('event', {type: 'other', sound:'queremos', user: user, id: id});
+			return false;
 		});
 
 		$caraanchoa.on('click', function() {
 			socket.emit('event', {type: 'other', sound:'caraanchoa', user: user, id: id});
+			return false;
 		});
 
 		socket.on('event', function(data){
@@ -93,6 +100,9 @@ $(function(){
 		// We get an event
 		socket.on('event', function(data){
 
+			console.log('here?', data);
+			log(data);
+
 			switch (data.type) {
 				case 'positive-start':
 					increaseApplause(data);
@@ -100,12 +110,16 @@ $(function(){
 				case 'positive-end':
 					decreaseApplause(data);
 					break;
+				case 'negative-start':
+					increaseBoo(data);
+					break;
+				case 'negative-end':
+					decreaseBoo(data);
+					break;
 				case 'other':
 					triggerSound(data.sound);
 					break;
 			}
-
-			log(data);
 
 		});
 
@@ -133,6 +147,8 @@ $(function(){
 	}
 
 	// Sound functions
+
+	// Applause
 	function increaseApplause(data) {
 
 		numApplauding++;
@@ -157,6 +173,32 @@ $(function(){
 		}
 	}
 
+	// Boo
+	function increaseBoo(data) {
+
+		numApplauding++;
+
+		if (numApplauding == 1) {
+			$applausePlayer.play(); // start
+			$applausePlayer.volume = 0.1; // 1 tenth
+		} else {
+			$applausePlayer.volume = numApplauding * 10 / 100;
+		}
+	}
+
+	function decreaseBoo(data) {
+
+		numApplauding--;
+
+		if (numApplauding == 0) {
+			$applausePlayer.stop(); // start
+		} else {
+			$applausePlayer.volume = numApplauding * 10 / 100;
+			console.log($applausePlayer.volume);
+		}
+	}
+
+	// Other sounds
 	function triggerSound(sound) {
 
 		console.log(sound);
@@ -195,15 +237,14 @@ $(function(){
 				break;
 		}
 
+		console.log('hey', data, message);
+
 		message = data.user + ' ' + message; // we add the name of the user
 
 		var $logs = $('#logs');
 		var additionalClass = typeof (data.sound == "undefined") ? data.type : data.type + ' ' + data.sound; // We add classes to the log so we can style them
 		var $userLog = '<div class="log ' + additionalClass + '">' + message + '</div>';
 		$logs.prepend($userLog);
-
-		console.log(message);
-
 	}
 
 	// Generate unique ID
