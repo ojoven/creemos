@@ -68,19 +68,28 @@ sub { top: 0.4em; }
 .container { position: relative; max-width: 1180px; margin: 0 auto; text-align: center; }
 
 @media screen and (max-width: 1200px) { .container { max-width: 100%; padding: 0 1.5%; } }
+footer { position: absolute; bottom: 0; height: 100px; text-align: center; width: 100%; }
+
 .grid.row50 > .container > * { width: 46%; float: left; }
 .grid.row50 > .container > *:first-child { margin-right: 4%; }
 
 #header { background: #eaf7fd; padding: 15px 0; }
 #header h1 { font-size: 20px; }
 
-#ratings { display: none; }
+#ratings { display: block; }
 
-#resume { display: block; }
+#resume { display: none; }
 
 .section { margin: 20px 0; }
 
 .option { margin: 20px 0; padding-bottom: 20px; border-bottom: 2px solid #eaf7fd; }
+
+.audios { display: none; }
+
+.logs { margin: 20px 0; }
+.logs .log { font-size: 14px; color: #444; margin: 5px 0; }
+.logs .log.positive-start, .logs .log.positive-end { color: #78AB46; }
+.logs .log.negative-start, .logs .log.negative-end { color: #CD2626; }
 
 /** PAGES **/
 /** HELPERS **/
@@ -105,7 +114,8 @@ input { -webkit-appearance: none; border-radius: 0; }
 
 /** COMPONENTS **/
 .btn { -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; -webkit-transition: all 0.2s ease; transition: all 0.2s ease; display: inline-block; font-size: 16px; line-height: 1.2; padding: 10px 20px 10px 20px; text-decoration: none; text-transform: uppercase; text-align: center; margin: 10px; }
-.btn.btn-rating { border-radius: 50%; width: 100px; height: 100px; border: 3px solid #ccc; text-indent: -99999px; box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.29804) inset, 0 -1px 1px 0 rgba(255, 255, 255, 0.14902) inset, 0 7px 0 0 #bbbbbb, 0 8px 3px 0 rgba(0, 0, 0, 0.2); }
+.btn.btn-rating { border-radius: 50%; width: 100px; height: 100px; border: 3px solid #ccc; box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.29804) inset, 0 -1px 1px 0 rgba(255, 255, 255, 0.14902) inset, 0 7px 0 0 #bbbbbb, 0 8px 3px 0 rgba(0, 0, 0, 0.2); }
+.btn.btn-rating > i { color: #ffffff; font-size: 50px; position: relative; top: 10px; }
 .btn.btn-rating:active { box-shadow: none; -moz-transform: translate3d(0px, 5px, 0); -o-transform: translate3d(0px, 5px, 0); -ms-transform: translate3d(0px, 5px, 0); -webkit-transform: translate3d(0px, 5px, 0); transform: translate3d(0px, 5px, 0); }
 .btn.btn-rating.rating-positive { border-color: #5f8737; background: #78AB46; }
 .btn.btn-rating.rating-negative { border-color: #a21e1e; background: #CD2626; }
