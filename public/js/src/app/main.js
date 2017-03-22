@@ -20,11 +20,12 @@ $(function(){
 		$caraanchoa = $('#caraanchoa'),
 
 		// Presenter
-		$applausePlayer = document.getElementById('applause-player');
+		$applausePlayer = document.getElementById('applause-player'),
+		$booPlayer = document.getElementById('boo-player');
 
 	// OTHERS
 	var numApplauding = 0,
-		numBoohing = 0;
+		numBooing = 0;
 
 	// NAMES
 	var names = ['Mikel', 'Fernando', 'Andoni', 'Raquel', 'Xabi', 'Antonio', 'Federico', 'Luis', 'Jon', 'Ion', 'Julen', 'Igor', 'Imanol', 'Iñigo'];
@@ -37,26 +38,30 @@ $(function(){
 	if ($body.hasClass('judge')) {
 
 		// Applause
-		$positive.on('touchstart', function() {
+		$positive.on('touchstart mousedown', function(e) {
+			e.preventDefault();
 			$positive.addClass('active');
 			socket.emit('event', {type: 'positive-start', user: user, id: id});
 			return false;
 		});
 
-		$positive.on('touchend', function() {
+		$positive.on('touchend mouseup', function(e) {
+			e.preventDefault();
 			$positive.removeClass('active');
 			socket.emit('event', {type: 'positive-end', user: user, id: id});
 			return false;
 		});
 
 		// Boooh
-		$negative.on('touchstart', function() {
+		$negative.on('touchstart mousedown', function(e) {
+			e.preventDefault();
 			$negative.addClass('active');
 			socket.emit('event', {type: 'negative-start', user: user, id: id});
 			return false;
 		});
 
-		$negative.on('touchend', function() {
+		$negative.on('touchend mouseup', function(e) {
+			e.preventDefault();
 			$negative.removeClass('active');
 			socket.emit('event', {type: 'negative-end', user: user, id: id});
 			return false;
@@ -153,6 +158,8 @@ $(function(){
 
 		numApplauding++;
 
+		console.log('numApplauding', numApplauding);
+
 		if (numApplauding == 1) {
 			$applausePlayer.play(); // start
 			$applausePlayer.volume = 0.1; // 1 tenth
@@ -165,36 +172,38 @@ $(function(){
 
 		numApplauding--;
 
+		console.log('decrease numApplauding', numApplauding);
+
 		if (numApplauding == 0) {
-			$applausePlayer.stop(); // start
+			console.log('stop');
+			$applausePlayer.pause(); // stop
 		} else {
 			$applausePlayer.volume = numApplauding * 10 / 100;
-			console.log($applausePlayer.volume);
 		}
 	}
 
 	// Boo
 	function increaseBoo(data) {
 
-		numApplauding++;
+		numBooing++;
 
-		if (numApplauding == 1) {
-			$applausePlayer.play(); // start
-			$applausePlayer.volume = 0.1; // 1 tenth
+		if (numBooing == 1) {
+			$booPlayer.play(); // start
+			$booPlayer.volume = 0.1; // 1 tenth
 		} else {
-			$applausePlayer.volume = numApplauding * 10 / 100;
+			$booPlayer.volume = numBooing * 10 / 100;
 		}
 	}
 
 	function decreaseBoo(data) {
 
-		numApplauding--;
+		numBooing--;
 
 		if (numApplauding == 0) {
-			$applausePlayer.stop(); // start
+			$booPlayer.pause(); // stop
+			console.log('stop');
 		} else {
-			$applausePlayer.volume = numApplauding * 10 / 100;
-			console.log($applausePlayer.volume);
+			$booPlayer.volume = numBooing * 10 / 100;
 		}
 	}
 
