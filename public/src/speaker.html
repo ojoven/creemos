@@ -24,13 +24,16 @@
 
 	</header>
 
-	@@include('sections/speaker/audios.html')
-	@@include('sections/speaker/logs.html')
-
+	<div class="container">
+		@@include('sections/speaker/audios.html')
+		@@include('sections/speaker/logs.html')
+		@@include('sections/speaker/url.html')
+	</div>
 
 	<footer>
 		<a href="#" class="btn btn-default" id="to-ratings">Ratings</a>
 		<a href="#" class="btn btn-default" id="to-resume">Resume</a>
+		<a href="#" class="btn btn-default" id="to-send-url">Send URL</a>
 	</footer>
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

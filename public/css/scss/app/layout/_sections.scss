@@ -2,9 +2,13 @@
 // SECTIONS
 // ==============================================
 
-// Judge
-#ratings { display: block; }
-#resume { display: none; }
+// Audience
+.audience section {
+	display: none;
+	&.active {
+		display: block;
+	}
+}
 
 .section {
 	margin: 20px 0;
@@ -20,14 +24,14 @@
 	margin-bottom: 20px;
 }
 
-// Presenter
+// Speaker
 .audios {
 	display: none;
 }
 
 .logs_container {
-	width: 90%;
-	margin: 20px auto;
+	width: 100%;
+	margin: 0 auto;
 	height: 250px;
 	padding: 20px;
 	border: 2px solid #ccc;

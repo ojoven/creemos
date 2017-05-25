@@ -22,9 +22,7 @@
 @import "app/layout/sections";
 
 /** PAGES **/
-@import "app/pages/error";
-@import "app/pages/front";
-@import "app/pages/login";
+@import "app/pages/speaker";
 
 /** HELPERS **/
 @import "app/helpers/accessibility";
@@ -38,7 +36,7 @@
 @import "app/components/links";
 @import "app/components/texts";
 @import "app/components/titles";
-@import "app/components/thumbnails";
+@import "app/components/iframe";
 
 /** PRINT **/
 @import "app/helpers/print";
