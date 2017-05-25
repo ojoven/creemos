@@ -54,6 +54,22 @@ module.exports = function(grunt) {
             watch_css_files: {
                 files : ['css/scss/**/*.scss'],
                 tasks : ['compass:dev']
+            },
+            watch_html_files: {
+                files : ['src/**/*.html'],
+                tasks : ['includereplace']
+            }
+        },
+        includereplace: {
+            dev: {
+                options: {
+                    srcDir: 'src/'
+                },
+                files: [
+                    {src: '*.html', dest: 'views/', expand: true, cwd: 'src/'},
+                ]
+                //src: '*.html',
+                //dest: 'views'
             }
         }
     });
@@ -62,10 +78,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-include-replace');
 
     // Default, to be used on development environments
-    grunt.registerTask('default', ['compass:dev', 'concat', 'watch']); // First we compile and concat JS and then we watch
+    grunt.registerTask('default', ['includereplace', 'compass:dev', 'concat', 'watch']); // First we compile and concat JS and then we watch
 
     // Post Commit, to be executed after commit
     grunt.registerTask('deploy', ['concat', 'uglify', 'compass:prod']);
