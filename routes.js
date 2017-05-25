@@ -9,14 +9,14 @@ module.exports = function(app,io){
 
 	app.get('/', function(req, res){
 
-		// Render views/judge.html
-		res.render('judge');
+		// Render views/audience.html
+		res.render('audience');
 	});
 
-	app.get('/presenter', function(req,res){
+	app.get('/speaker', function(req,res){
 
-		// Render views/presenter.html
-		res.render('presenter');
+		// Render views/speaker.html
+		res.render('speaker');
 	});
 };
 
