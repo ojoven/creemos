@@ -44,14 +44,15 @@ $btnMainHoverBorder: #ccc;
       @include translateY(5px);
     }
 
+    // Rating Finale
     &.rating-positive {
-      border-color: darken($greenPea, 10%);
-      background: $greenPea;
+      border-color: darken($redFirebrick, 10%);
+      background: $redFirebrick;
     }
 
     &.rating-negative {
-      border-color: darken($redFirebrick, 10%);
-      background: $redFirebrick;
+      border-color: darken($greySilver, 10%);
+      background: $greySilver;
     }
 
   }

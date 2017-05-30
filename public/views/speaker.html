@@ -22,6 +22,10 @@
 			¡CREEMOS! (del verbo crear)
 		</h1>
 
+		<nav class="menu-right">
+			<li><a id="to-dashboard" href="#" class="fa fa-dashboard"></a></li>
+		</nav>
+
 	</header>
 
 	<div class="container">
@@ -33,7 +37,48 @@
 </section>
 		</div>
 
-		<div class="dashboard">
+		<div id="dashboard" class="dashboard">
+			<!-- LOGS -->
+<section>
+	<h2 class="section-title">Ratings</h2>
+	<div class="section-body dashboard-ratings">
+
+		<!-- NEGATIVE -->
+		<span class="dashboard-rating negative">
+			<i class="fa fa-trash"></i><span class="value">0</span>
+		</span>
+
+		<!-- POSITIVE -->
+		<span class="dashboard-rating positive">
+			<i class="fa fa-heart"></i><span class="value">0</span>
+		</span>
+
+	</div>
+</section>
+			<!-- LOGS -->
+<section>
+	<h2 class="section-title">Logs</h2>
+	<div class="section-body logs_container">
+		<div id="logs" class="logs">
+		</div>
+	</div>
+</section>
+			<!-- URL -->
+<section>
+	<h2 class="section-title">URL</h2>
+	<div class="section-body">
+		<input id="url" type="url" placeholder="Enter an URL" />
+		<a href="#" class="btn btn-default" id="to-send-url">Send URL</a>
+	</div>
+</section>
+
+			<footer>
+				<a href="#" class="btn btn-default" id="to-ratings">Ratings</a>
+				<a href="#" class="btn btn-default" id="to-resume">Resume</a>
+			</footer>
+		</div>
+
+		<div class="others">
 			<!-- AUDIOS -->
 <section class="audios">
 
@@ -70,27 +115,6 @@
 	<div class="log"></div>
 
 </section>
-			<!-- LOGS -->
-<section>
-	<h2 class="section-title">Logs</h2>
-	<div class="logs_container">
-		<div id="logs" class="logs">
-		</div>
-	</div>
-
-</section>
-			<!-- URL -->
-<section>
-	<h2 class="section-title">URL</h2>
-	<input id="url" type="url" placeholder="Enter an URL" />
-
-</section>
-
-			<footer>
-				<a href="#" class="btn btn-default" id="to-ratings">Ratings</a>
-				<a href="#" class="btn btn-default" id="to-resume">Resume</a>
-				<a href="#" class="btn btn-default" id="to-send-url">Send URL</a>
-			</footer>
 		</div>
 
 	</div>

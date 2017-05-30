@@ -5,8 +5,8 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
-                    'js/src/vendor/jquery.min.js',
                     'js/src/vendor/moment.min.js',
+                    'js/src/vendor/draggable.js',
                     'js/src/app/**/*.js',
                 ],
                 dest: 'js/app.min.js'

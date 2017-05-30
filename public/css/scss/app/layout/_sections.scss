@@ -29,41 +29,8 @@
 	display: block;
 }
 
-.dashboard {
-	display: none;
-}
-
 .audios {
 	display: none;
-}
-
-.logs_container {
-	width: 100%;
-	margin: 0 auto;
-	height: 250px;
-	padding: 20px;
-	border: 2px solid #ccc;
-
-	.logs {
-		height: 200px;
-		overflow: hidden;
-	}
-
-	.log {
-		font-size: 14px;
-		color: $blackTundora;
-		margin: 5px 0;
-
-		&.positive-start,
-		&.positive-end {
-			color: $greenPea;
-		}
-
-		&.negative-start,
-		&.negative-end {
-			color: $redFirebrick;
-		}
-	}
 }
 
 // ==============================================

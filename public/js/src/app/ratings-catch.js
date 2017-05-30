@@ -6,7 +6,11 @@ var $applausePlayer = document.getElementById('applause-player'),
 	$booPlayer = document.getElementById('boo-player');
 
 // OTHERS
-var numApplauding = 0,
+var ratingPositive = 0,
+	ratingNegative = 0,
+	ratingPositiveInterval = [],
+	ratingNegativeInterval = [],
+	numApplauding = 0,
 	numBooing = 0;
 
 $(function(){
@@ -21,15 +25,19 @@ $(function(){
 
 			switch (data.type) {
 				case 'positive-start':
+					increasePositiveRatingsValue(data);
 					increaseApplause(data);
 					break;
 				case 'positive-end':
+					stopPositiveRatingsValue(data);
 					decreaseApplause(data);
 					break;
 				case 'negative-start':
+					increaseNegativeRatingsValue(data);
 					increaseBoo(data);
 					break;
 				case 'negative-end':
+					stopNegativeRatingsValue(data);
 					decreaseBoo(data);
 					break;
 				case 'other':
@@ -42,6 +50,36 @@ $(function(){
 	}
 
 });
+
+// Rating value functions
+function increasePositiveRatingsValue(data) {
+
+	var $ratingPositive = $('.dashboard-rating.positive > .value');
+	ratingPositiveInterval[data.id] = setInterval(function() {
+		ratingPositive++;
+		$ratingPositive.text(ratingPositive);
+	}, 100);
+
+}
+
+function stopPositiveRatingsValue(data) {
+	clearInterval(ratingPositiveInterval[data.id])
+}
+
+function stopNegativeRatingsValue(data) {
+	clearInterval(ratingNegativeInterval[data.id])
+}
+
+// Rating value functions
+function increaseNegativeRatingsValue(data) {
+
+	var $ratingNegative = $('.dashboard-rating.negative > .value');
+	ratingNegativeInterval[data.id] = setInterval(function() {
+		ratingNegative++;
+		$ratingNegative.text(ratingNegative);
+	}, 100);
+
+}
 
 // Sound functions
 

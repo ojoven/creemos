@@ -78,6 +78,10 @@ footer { position: absolute; bottom: 0; height: 100px; text-align: center; width
 #header { background: #CD2626; padding: 15px 0; }
 #header h1 { color: #ffffff; font-size: 20px; }
 
+.menu-right { position: absolute; right: 0; top: 0; padding: 10px; }
+.menu-right > li { list-style: none; }
+.menu-right > li > a { padding: 5px; color: #fff; font-size: 20px; }
+
 .audience section { display: none; }
 .audience section.active { display: block; }
 
@@ -89,20 +93,9 @@ footer { position: absolute; bottom: 0; height: 100px; text-align: center; width
 
 .presentation { display: block; }
 
-.dashboard { display: none; }
-
 .audios { display: none; }
 
-.logs_container { width: 100%; margin: 0 auto; height: 250px; padding: 20px; border: 2px solid #ccc; }
-.logs_container .logs { height: 200px; overflow: hidden; }
-.logs_container .log { font-size: 14px; color: #444; margin: 5px 0; }
-.logs_container .log.positive-start, .logs_container .log.positive-end { color: #78AB46; }
-.logs_container .log.negative-start, .logs_container .log.negative-end { color: #CD2626; }
-
 /** PAGES **/
-.speaker section { margin: 20px 0; }
-.speaker section .section-title { font-size: 16px; margin: 20px 0 5px; }
-
 /** HELPERS **/
 .srt { clip: rect(1px, 1px, 1px, 1px); position: absolute; margin: 0; padding: 0; }
 
@@ -128,14 +121,34 @@ input { -webkit-appearance: none; border-radius: 0; }
 .btn.btn-rating { border-radius: 50%; width: 100px; height: 100px; border: 3px solid #ccc; box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.29804) inset, 0 -1px 1px 0 rgba(255, 255, 255, 0.14902) inset, 0 7px 0 0 #bbbbbb, 0 8px 3px 0 rgba(0, 0, 0, 0.2); }
 .btn.btn-rating > i { color: #ffffff; font-size: 50px; position: relative; top: 10px; text-shadow: 0 2px 2px #444; }
 .btn.btn-rating.active { box-shadow: none; -moz-transform: translate3d(0px, 5px, 0); -o-transform: translate3d(0px, 5px, 0); -ms-transform: translate3d(0px, 5px, 0); -webkit-transform: translate3d(0px, 5px, 0); transform: translate3d(0px, 5px, 0); }
-.btn.btn-rating.rating-positive { border-color: #5f8737; background: #78AB46; }
-.btn.btn-rating.rating-negative { border-color: #a21e1e; background: #CD2626; }
+.btn.btn-rating.rating-positive { border-color: #a21e1e; background: #CD2626; }
+.btn.btn-rating.rating-negative { border-color: #b3b3b3; background: #cccccc; }
 .btn.btn-default { color: #444; border: 3px solid #444; }
 .btn.btn-default:hover, .btn.btn-default:focus { background-color: #444; border-color: #ffffff; color: #ffffff; }
 .btn.btn-twitter { color: #1da1f2; border: 3px solid #1da1f2; background: #ffffff; text-transform: none; padding: 10px; }
 .btn.btn-twitter > i { margin-right: 5px; }
 
-input { padding: 10px 20px; font-size: 14px; border: 2px solid #cccccc; width: 100%; margin: 20px 0; }
+.dashboard { position: fixed; top: 35px; right: 12px; width: 300px; height: 400px; padding: 10px; background: rgba(255, 255, 255, 0.8); border-radius: 4px; visibility: hidden; opacity: 0; -moz-transition: opacity 0.5s linear; -o-transition: opacity 0.5s linear; -webkit-transition: opacity 0.5s linear; transition: opacity 0.5s linear; }
+.dashboard.active { visibility: visible; opacity: 1; }
+.dashboard section { margin: 10px; }
+.dashboard section .section-title { margin: 0; background: #CD2626; color: #fff; padding: 5px; cursor: pointer; font-size: 14px; }
+.dashboard section .section-body { display: none; }
+.dashboard .btn { margin: 0; }
+
+.dashboard-ratings { padding: 15px 0 10px; }
+.dashboard-ratings:after { content: ' '; display: block; clear: both; }
+.dashboard-ratings .dashboard-rating { float: left; width: 48%; text-align: left; }
+.dashboard-ratings .dashboard-rating > i { display: inline-block; border-radius: 50%; width: 30px; height: 30px; margin-right: 10px; color: #fff; }
+.dashboard-ratings .dashboard-rating.positive > i { background: #CD2626; padding: 7px; }
+.dashboard-ratings .dashboard-rating.negative > i { background: #cccccc; padding: 6px 9px; }
+
+.logs_container { width: 100%; margin: 0 auto; height: 250px; padding: 20px; border: 2px solid #ccc; }
+.logs_container .logs { height: 200px; overflow: hidden; }
+.logs_container .log { font-size: 14px; color: #444; margin: 5px 0; }
+.logs_container .log.positive-start, .logs_container .log.positive-end { color: #78AB46; }
+.logs_container .log.negative-start, .logs_container .log.negative-end { color: #CD2626; }
+
+input { padding: 10px 20px; font-size: 14px; border: 2px solid #cccccc; width: 100%; margin: 10px 0; }
 
 h1, h2, h3 { color: #000; font-size: 38px; line-height: 1.2; }
 
