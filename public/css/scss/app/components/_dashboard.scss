@@ -36,6 +36,7 @@
 		}
 
 		.section-body {
+			padding: 15px 0 10px;
 			display: none;
 		}
 	}
@@ -49,8 +50,6 @@
 
 // Ratings
 .dashboard-ratings {
-
-	padding: 15px 0 10px;
 
 	&:after {
 		content: ' ';
@@ -82,12 +81,12 @@
 .logs_container {
 	width: 100%;
 	margin: 0 auto;
-	height: 250px;
+	height: 200px;
 	padding: 20px;
 	border: 2px solid #ccc;
 
 	.logs {
-		height: 200px;
+		height: 150px;
 		overflow: hidden;
 	}
 
