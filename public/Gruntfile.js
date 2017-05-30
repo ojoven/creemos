@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                 tasks : ['compass:dev']
             },
             watch_html_files: {
-                files : ['src/**/*.html'],
+                files : ['src/**/*.html', 'src/*.html'],
                 tasks : ['includereplace']
             }
         },

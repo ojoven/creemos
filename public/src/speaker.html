@@ -9,7 +9,7 @@
 
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<script src="https://use.fontawesome.com/12c273beb8.js"></script>
-	<!--<link href="http://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet" type="text/css">-->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
 
 </head>
 
@@ -19,22 +19,30 @@
 	<header id="header">
 
 		<h1>
-			Speaker | Creemos (del verbo crear)
+			¡CREEMOS! (del verbo crear)
 		</h1>
 
 	</header>
 
 	<div class="container">
-		@@include('sections/speaker/audios.html')
-		@@include('sections/speaker/logs.html')
-		@@include('sections/speaker/url.html')
-	</div>
 
-	<footer>
-		<a href="#" class="btn btn-default" id="to-ratings">Ratings</a>
-		<a href="#" class="btn btn-default" id="to-resume">Resume</a>
-		<a href="#" class="btn btn-default" id="to-send-url">Send URL</a>
-	</footer>
+		<div class="presentation">
+			@@include('sections/speaker/presentation.html')
+		</div>
+
+		<div class="dashboard">
+			@@include('sections/speaker/audios.html')
+			@@include('sections/speaker/logs.html')
+			@@include('sections/speaker/url.html')
+
+			<footer>
+				<a href="#" class="btn btn-default" id="to-ratings">Ratings</a>
+				<a href="#" class="btn btn-default" id="to-resume">Resume</a>
+				<a href="#" class="btn btn-default" id="to-send-url">Send URL</a>
+			</footer>
+		</div>
+
+	</div>
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>

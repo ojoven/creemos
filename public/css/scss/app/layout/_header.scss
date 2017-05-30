@@ -4,10 +4,12 @@
 
 // Main header
 #header {
-	background: $creamFoam;
+	background: $redFirebrick;
 	padding: 15px 0;
 
 	h1 {
+		@extend .title;
+		color: $white;
 		font-size: 20px;
 	}
 }

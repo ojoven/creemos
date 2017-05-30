@@ -9,7 +9,7 @@
 
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<script src="https://use.fontawesome.com/12c273beb8.js"></script>
-	<!--<link href="http://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet" type="text/css">-->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
 
 </head>
 
@@ -19,13 +19,22 @@
 	<header id="header">
 
 		<h1>
-			Speaker | Creemos (del verbo crear)
+			¡CREEMOS! (del verbo crear)
 		</h1>
 
 	</header>
 
 	<div class="container">
-		<!-- AUDIOS -->
+
+		<div class="presentation">
+			<!-- PRESENTATION -->
+<section>
+	<iframe src="https://docs.google.com/presentation/d/16N9yvVJOVn_bjXrX_axU5LpGQv1Yg-uyO_C_p9khfgA/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</section>
+		</div>
+
+		<div class="dashboard">
+			<!-- AUDIOS -->
 <section class="audios">
 
 	<audio id="applause-player" controls>
@@ -61,7 +70,7 @@
 	<div class="log"></div>
 
 </section>
-		<!-- LOGS -->
+			<!-- LOGS -->
 <section>
 	<h2 class="section-title">Logs</h2>
 	<div class="logs_container">
@@ -70,19 +79,21 @@
 	</div>
 
 </section>
-		<!-- URL -->
+			<!-- URL -->
 <section>
 	<h2 class="section-title">URL</h2>
 	<input id="url" type="url" placeholder="Enter an URL" />
 
 </section>
-	</div>
 
-	<footer>
-		<a href="#" class="btn btn-default" id="to-ratings">Ratings</a>
-		<a href="#" class="btn btn-default" id="to-resume">Resume</a>
-		<a href="#" class="btn btn-default" id="to-send-url">Send URL</a>
-	</footer>
+			<footer>
+				<a href="#" class="btn btn-default" id="to-ratings">Ratings</a>
+				<a href="#" class="btn btn-default" id="to-resume">Resume</a>
+				<a href="#" class="btn btn-default" id="to-send-url">Send URL</a>
+			</footer>
+		</div>
+
+	</div>
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
